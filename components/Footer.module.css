@@ -1,0 +1,111 @@
+.footer {
+  margin-top: auto;
+}
+
+.main {
+  background: var(--color-footer);
+  color: var(--color-on-inverse-muted);
+  padding: 4rem 0 2.25rem;
+}
+
+.grid {
+  display: grid;
+  gap: 2.5rem;
+  max-width: 80rem;
+}
+
+@media (min-width: 800px) {
+  .grid {
+    grid-template-columns: 1.4fr 0.9fr 0.9fr;
+    gap: 4rem;
+    align-items: start;
+  }
+}
+
+.brandCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 22rem;
+}
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logoMark {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0.35rem;
+  border-radius: 0.65rem;
+  background: var(--color-honey);
+  color: var(--color-on-honey);
+  flex-shrink: 0;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-on-inverse);
+}
+
+.blurb {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-on-inverse-muted);
+}
+
+.heading {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--color-honey);
+  margin-bottom: 0.9rem;
+}
+
+.list {
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-on-inverse-muted);
+}
+
+.list a {
+  color: var(--color-on-inverse-muted);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.list a:hover,
+.list a:focus-visible {
+  color: var(--color-honey);
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 3rem;
+  padding-top: 0;
+  max-width: 80rem;
+}
+
+.copy,
+.tag {
+  color: var(--color-footer-muted);
+  font-size: 0.875rem;
+}

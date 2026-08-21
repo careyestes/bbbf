@@ -1,0 +1,275 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 0.2rem solid var(--color-ink);
+  border-radius: 1.35rem;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  font-family: var(--font-card-body);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+}
+
+.cardSoldOut {
+  opacity: 0.7;
+}
+
+.media {
+  flex: 1 1 auto;
+  position: relative;
+  height: 15rem;
+  background: var(--color-honey-soft);
+  overflow: hidden;
+}
+
+.mediaImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.stockBadge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.3em 0.6em;
+  border-radius: var(--radius-pill);
+  font-size: calc(var(--fluid-0) * 0.7);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+/* .highlight {
+  outline: 3px solid var(--color-honey);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
+} */
+
+.stockYours {
+  right: 0.75rem;
+  left: auto;
+  background: var(--color-ink);
+  color: var(--color-honey);
+}
+
+.stockOut {
+  background: var(--color-ink);
+  color: var(--color-error-soft);
+}
+
+.body {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1rem 1.1rem;
+  background-color: var(--color-card-body);
+  background-image:
+    radial-gradient(var(--color-card-speckle) 0.8px, transparent 0.9px),
+    radial-gradient(var(--color-card-speckle-2) 0.65px, transparent 0.75px),
+    radial-gradient(var(--color-card-speckle-3) 1.1px, transparent 1.2px),
+    linear-gradient(180deg, var(--color-card-body) 0%, var(--color-card-body-end) 100%);
+  background-size: 3px 3px, 5px 5px, 7px 7px, auto;
+  background-position: 0 0, 1.5px 1.5px, 0.5px 2.5px, 0 0;
+  border-top: 0.1rem solid var(--color-honey-deep);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.volume {
+  color: var(--color-ink);
+  font-family: var(--font-card-body);
+  font-size: calc(var(--fluid-0) * 0.85);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.name {
+  font-family: var(--font-card-head);
+  font-size: var(--fluid-1);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--color-ink);
+}
+
+.stockCount {
+  margin-top: 0.35rem;
+  font-family: var(--font-card-body);
+  font-size: calc(var(--fluid-0) * 0.75);
+  font-weight: 700;
+  color: var(--color-muted);
+  letter-spacing: 0.01em;
+}
+
+.stockCountLow {
+  color: var(--color-link);
+}
+
+.stockCountOut {
+  color: var(--color-error);
+}
+
+.add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  flex-shrink: 0;
+  align-self: center;
+  min-width: 4.75rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--color-honey);
+  border-radius: 0.85rem;
+  background: var(--color-honey);
+  color: var(--color-on-honey);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.price {
+  font-family: var(--font-card-head);
+  font-size: calc(var(--fluid-0) * 1.05);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.addLabel {
+  font-family: var(--font-card-body);
+  font-size: calc(var(--fluid-0) * 0.85);
+  font-weight: 800;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.add:hover:not(:disabled) {
+  background: var(--color-honey-hover);
+  transform: translateY(-1px);
+}
+
+.add:focus-visible:not(:disabled) {
+  background: var(--color-honey-hover);
+}
+
+.add:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.added {
+  animation: pulseBadge 0.45s ease;
+}
+
+/* Compact = hero 2x2 cards */
+.compact {
+  box-shadow: var(--shadow-card-compact);
+  border-radius: 1.15rem;
+}
+
+.compact .media {
+  height: clamp(6.5rem, 14vh, 9.5rem);
+  background: var(--color-honey-soft);
+}
+
+.compact .mediaImg {
+  object-fit: cover;
+  object-position: center;
+}
+
+.compact .body {
+  padding: 0.65rem 0.7rem 0.75rem;
+  gap: 0.55rem;
+}
+
+.compact .info {
+  gap: 0.05rem;
+}
+
+.compact .volume {
+  font-size: calc(var(--fluid-0) * 0.72);
+  font-weight: 700;
+}
+
+.compact .name {
+  font-size: calc(var(--fluid-0) * 0.95);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.compact .stockCount {
+  margin-top: 0.2rem;
+  font-size: calc(var(--fluid-0) * 0.65);
+}
+
+.compact .add {
+  min-width: 3.85rem;
+  padding: 0.4rem 0.55rem;
+  border-radius: 0.7rem;
+  gap: 0.05rem;
+}
+
+.compact .price {
+  font-size: calc(var(--fluid-0) * 0.9);
+}
+
+.compact .addLabel {
+  font-size: calc(var(--fluid-0) * 0.72);
+}
+
+.compact .stockBadge {
+  top: 0.4rem;
+  left: 0.4rem;
+  padding: 0.18em 0.4em;
+  font-size: calc(var(--fluid-0) * 0.6);
+}
+
+.compact .stockYours {
+  right: 0.4rem;
+  left: auto;
+}
+
+@media (min-width: 1100px) {
+  .compact .media {
+    height: clamp(7rem, 22vh, 20rem);
+  }
+
+  .compact .body {
+    padding: 0.85rem 0.9rem 0.95rem;
+  }
+
+  .compact .name {
+    font-size: var(--fluid-1);
+  }
+
+  .compact .add {
+    min-width: 4.5rem;
+    padding: 0.55rem 0.7rem;
+  }
+
+  .compact .price {
+    font-size: calc(var(--fluid-0) * 1.05);
+  }
+
+  .compact .addLabel {
+    font-size: calc(var(--fluid-0) * 0.8);
+  }
+}
+
+@media (max-width: 640px) {
+  .compact .media {
+    height: 6.25rem;
+  }
+}

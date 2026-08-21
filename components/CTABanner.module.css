@@ -1,0 +1,68 @@
+.banner {
+  background: var(--color-inverse);
+  padding: 3.5rem 0;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  align-items: flex-start;
+  max-width: 80rem;
+}
+
+@media (min-width: 800px) {
+  .inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.5rem;
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 34rem;
+}
+
+.text h2 {
+  color: var(--color-on-inverse);
+  font-size: clamp(1.75rem, 3.5vw, 2.375rem);
+}
+
+.text p {
+  color: var(--color-on-inverse-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-shrink: 0;
+  padding: 1rem 1.75rem;
+  border-radius: var(--radius-md);
+  background: var(--color-honey);
+  color: var(--color-on-honey);
+  font-size: 1rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 0.25s ease, background 0.2s ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background: var(--color-honey-hover);
+  text-decoration: none;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:focus-visible {
+  outline-color: var(--color-honey);
+}

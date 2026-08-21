@@ -1,0 +1,1602 @@
+{
+  "version": "2.17",
+  "children": [
+    {
+      "type": "frame",
+      "id": "qyGVK",
+      "x": 0,
+      "y": 0,
+      "name": "Honey Shop Page",
+      "clip": true,
+      "width": 1440,
+      "fill": "$bg-cream",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "IYhfP",
+          "name": "Hero Section",
+          "width": "fill_container",
+          "height": 820,
+          "fill": "$bg-cream",
+          "layout": "vertical",
+          "padding": [
+            32,
+            64,
+            64,
+            64
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "YXlCW",
+              "name": "Nav",
+              "width": "fill_container",
+              "gap": 24,
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "V1Yzp",
+                  "name": "Brand",
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "G5IDU",
+                      "name": "Logo Mark",
+                      "width": 44,
+                      "height": 44,
+                      "fill": "$honey-gold",
+                      "cornerRadius": 22,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "ELClf",
+                          "name": "Bee Icon",
+                          "width": 26,
+                          "height": 26,
+                          "icon": "hexagon",
+                          "library": "lucide",
+                          "fill": "$text-brown"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ur4U8",
+                      "name": "Brand Text",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n5Pe2",
+                          "name": "Farm Name",
+                          "fill": "$text-brown",
+                          "content": "Big Blue Barn Farm",
+                          "fontFamily": "$font-head",
+                          "fontSize": 20,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "I1ofHA",
+                          "name": "Tagline",
+                          "fill": "$text-soft",
+                          "content": "Shaw, Mississippi",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "MjECC",
+                  "name": "Nav Links",
+                  "gap": 36,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "QIpxf",
+                      "name": "About",
+                      "fill": "$text-brown",
+                      "content": "About",
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "U87f6t",
+                      "name": "Our Honey",
+                      "fill": "$text-brown",
+                      "content": "Our Honey",
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "nZ3mc",
+                      "name": "Order Nav Btn",
+                      "fill": "$honey-amber",
+                      "cornerRadius": 24,
+                      "padding": [
+                        10,
+                        22
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "UhOYj",
+                          "name": "Order Label",
+                          "fill": "$white",
+                          "content": "Order",
+                          "fontFamily": "$font-body",
+                          "fontSize": 15,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KtASF",
+              "name": "Hero Body",
+              "width": "fill_container",
+              "height": "fill_container",
+              "gap": 56,
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "gTg5v",
+                  "name": "Hero Copy",
+                  "width": 560,
+                  "layout": "vertical",
+                  "gap": 28,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "T85cC7",
+                      "name": "Badge",
+                      "fill": "$bg-cream-deep",
+                      "cornerRadius": 20,
+                      "gap": 8,
+                      "padding": [
+                        8,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "I2pE8J",
+                          "name": "Leaf",
+                          "width": 16,
+                          "height": 16,
+                          "icon": "leaf",
+                          "library": "lucide",
+                          "fill": "$leaf-green"
+                        },
+                        {
+                          "type": "text",
+                          "id": "KaIpc",
+                          "name": "Badge Text",
+                          "fill": "$honey-deep",
+                          "content": "Pure Raw Mississippi Honey",
+                          "fontFamily": "$font-body",
+                          "fontSize": 13,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "aM33o",
+                      "name": "Headline",
+                      "fill": "$text-brown",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Sweet, golden honey straight from our Delta barn",
+                      "lineHeight": 1.05,
+                      "fontFamily": "$font-head",
+                      "fontSize": 60,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "HEn5K",
+                      "name": "Subheadline",
+                      "fill": "$text-soft",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Raw, unfiltered, and lovingly harvested by our family in Shaw, Mississippi. Every jar is a little taste of home from our bees to your table.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$font-body",
+                      "fontSize": 19,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "owlYx",
+                      "name": "CTA Row",
+                      "gap": 24,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "U8jekH",
+                          "name": "Primary CTA",
+                          "fill": "$honey-amber",
+                          "cornerRadius": 30,
+                          "gap": 10,
+                          "padding": [
+                            16,
+                            32
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "FDnbw",
+                              "name": "Primary Label",
+                              "fill": "$white",
+                              "content": "Order Honey",
+                              "fontFamily": "$font-body",
+                              "fontSize": 17,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "d6wWX",
+                              "name": "Arrow",
+                              "width": 18,
+                              "height": 18,
+                              "icon": "arrow-right",
+                              "library": "lucide",
+                              "fill": "$white"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "DqMgn",
+                          "name": "Secondary Link",
+                          "gap": 6,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "YAxLi",
+                              "name": "Secondary Label",
+                              "fill": "$honey-deep",
+                              "content": "Meet the bees",
+                              "fontFamily": "$font-body",
+                              "fontSize": 16,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "FgEbg",
+                              "name": "Chevron",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$honey-deep"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "bXB1z",
+                  "name": "Hero Image Wrap",
+                  "width": 560,
+                  "height": "fill_container",
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": [
+                        180,
+                        180,
+                        32,
+                        32
+                      ],
+                      "id": "mYzgs",
+                      "x": 40,
+                      "y": 20,
+                      "name": "Hero Image",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "bermixstudio",
+                        "link": "https://unsplash.com/@bermixstudio",
+                        "author": "Bermix Studio"
+                      },
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1676313743536-291c818a5096?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODY2ODA0MDd8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "width": 480,
+                      "height": 600
+                    },
+                    {
+                      "type": "frame",
+                      "id": "b3QF0",
+                      "x": 0,
+                      "y": 400,
+                      "name": "Honeycomb Deco",
+                      "opacity": 0.9,
+                      "width": 120,
+                      "height": 120,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "polygon",
+                          "polygonCount": 6,
+                          "id": "GdeS9",
+                          "x": 0,
+                          "y": 0,
+                          "name": "Hex",
+                          "opacity": 0.85,
+                          "rotation": 90,
+                          "fill": "$honey-gold",
+                          "width": 44,
+                          "height": 44
+                        },
+                        {
+                          "type": "polygon",
+                          "polygonCount": 6,
+                          "id": "Vmq4M",
+                          "x": 52,
+                          "y": 0,
+                          "name": "Hex",
+                          "opacity": 0.85,
+                          "rotation": 90,
+                          "fill": "$honey-gold",
+                          "width": 44,
+                          "height": 44
+                        },
+                        {
+                          "type": "polygon",
+                          "polygonCount": 6,
+                          "id": "xvl44",
+                          "x": 26,
+                          "y": 45,
+                          "name": "Hex",
+                          "opacity": 0.85,
+                          "rotation": 90,
+                          "fill": "$honey-gold",
+                          "width": 44,
+                          "height": 44
+                        },
+                        {
+                          "type": "polygon",
+                          "polygonCount": 6,
+                          "id": "Ygz2Z",
+                          "x": 78,
+                          "y": 45,
+                          "name": "Hex",
+                          "opacity": 0.85,
+                          "rotation": 90,
+                          "fill": "$honey-gold",
+                          "width": 44,
+                          "height": 44
+                        },
+                        {
+                          "type": "polygon",
+                          "polygonCount": 6,
+                          "id": "iM4eY",
+                          "x": 0,
+                          "y": 90,
+                          "name": "Hex",
+                          "opacity": 0.85,
+                          "rotation": 90,
+                          "fill": "$honey-gold",
+                          "width": 44,
+                          "height": 44
+                        },
+                        {
+                          "type": "polygon",
+                          "polygonCount": 6,
+                          "id": "z9ukdI",
+                          "x": 52,
+                          "y": 90,
+                          "name": "Hex",
+                          "opacity": 0.85,
+                          "rotation": 90,
+                          "fill": "$honey-gold",
+                          "width": 44,
+                          "height": 44
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "G7tc0H",
+                      "x": 400,
+                      "y": 520,
+                      "name": "Jar Badge",
+                      "width": 120,
+                      "height": 120,
+                      "fill": "$white",
+                      "cornerRadius": 60,
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#8A4B1233",
+                        "offset": {
+                          "x": 0,
+                          "y": 8
+                        },
+                        "blur": 24
+                      },
+                      "layout": "vertical",
+                      "gap": 2,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "LguSE",
+                          "name": "Jar Number",
+                          "fill": "$honey-amber",
+                          "content": "100%",
+                          "fontFamily": "$font-head",
+                          "fontSize": 30,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Pm0kB",
+                          "name": "Jar Text",
+                          "fill": "$text-soft",
+                          "content": "Raw & Local",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ojDTT",
+          "name": "About Section",
+          "width": "fill_container",
+          "fill": "$bg-cream-deep",
+          "layout": "vertical",
+          "padding": [
+            96,
+            64
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "tEaNg",
+              "name": "About Body",
+              "width": 1312,
+              "gap": 64,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "S9FV8C",
+                  "name": "About Image Wrap",
+                  "width": 520,
+                  "height": 560,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 24,
+                      "id": "Rf27n",
+                      "x": 0,
+                      "y": 0,
+                      "name": "About Image",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "silverkblack",
+                        "link": "https://unsplash.com/@silverkblack",
+                        "author": "Vitaly Gariev"
+                      },
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1758522964413-4e256c45b9de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODY2ODA0NDl8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "width": 520,
+                      "height": 560
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Xfq7E",
+                      "x": -24,
+                      "y": 440,
+                      "name": "Est Badge",
+                      "width": 150,
+                      "height": 150,
+                      "fill": "$honey-gold",
+                      "cornerRadius": 75,
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#8A4B1233",
+                        "offset": {
+                          "x": 0,
+                          "y": 10
+                        },
+                        "blur": 30
+                      },
+                      "layout": "vertical",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ALRiG",
+                          "name": "Est Label",
+                          "fill": "$honey-deep",
+                          "content": "EST.",
+                          "fontFamily": "$font-body",
+                          "fontSize": 13,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "dS5Ix",
+                          "name": "Est Year",
+                          "fill": "$text-brown",
+                          "content": "2014",
+                          "fontFamily": "$font-head",
+                          "fontSize": 36,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "mQlL5",
+                          "name": "Est Sub",
+                          "fill": "$honey-deep",
+                          "content": "Family Owned",
+                          "fontFamily": "$font-body",
+                          "fontSize": 11,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Mm5Oa",
+                  "name": "About Copy",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "aagrC",
+                      "name": "Eyebrow",
+                      "fill": "$bg-cream",
+                      "cornerRadius": 16,
+                      "gap": 8,
+                      "padding": [
+                        6,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "hX8Vn",
+                          "name": "Barn",
+                          "width": 15,
+                          "height": 15,
+                          "icon": "warehouse",
+                          "library": "lucide",
+                          "fill": "$leaf-green"
+                        },
+                        {
+                          "type": "text",
+                          "id": "bZUL6",
+                          "name": "Eyebrow Text",
+                          "fill": "$honey-deep",
+                          "content": "OUR STORY",
+                          "fontFamily": "$font-body",
+                          "fontSize": 13,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "G3G6r",
+                      "name": "Heading",
+                      "fill": "$text-brown",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Our story starts in a little blue barn",
+                      "lineHeight": 1.1,
+                      "fontFamily": "$font-head",
+                      "fontSize": 44,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "R4QZZ5",
+                      "name": "Paragraph",
+                      "fill": "$text-soft",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "We're a family farm rooted deep in the Mississippi Delta, just outside Shaw. What started with a couple of curious hives in the backyard has grown into a whole buzzing community of bees we're proud to call family.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "$font-body",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Pc6dw",
+                      "name": "Paragraph",
+                      "fill": "$text-soft",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Every season we tend our hives by hand, letting the bees do what they do best. When harvest comes, we bottle the honey raw and unfiltered, so all that natural goodness makes it straight into your jar.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "$font-body",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "z3wGd",
+                      "name": "Paragraph",
+                      "fill": "$text-soft",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "No shortcuts, no additives, just pure Delta honey the way nature intended. We think you can taste the difference, and we can't wait for you to try it.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "$font-body",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n0x7dK",
+                      "name": "Trust Highlights",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "OvwrP",
+                          "name": "Raw & Unfiltered",
+                          "width": "fill_container",
+                          "fill": "$bg-cream",
+                          "cornerRadius": 16,
+                          "layout": "vertical",
+                          "gap": 10,
+                          "padding": 16,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "b1DlG",
+                              "name": "Icon Ring",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "$honey-gold",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon",
+                                  "id": "aQSuK",
+                                  "name": "Icon",
+                                  "width": 20,
+                                  "height": 20,
+                                  "icon": "sun",
+                                  "library": "lucide",
+                                  "fill": "$text-brown"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "dk2hZ",
+                              "name": "Label",
+                              "fill": "$text-brown",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Raw & Unfiltered",
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "RrdkR",
+                          "name": "Local to the Delta",
+                          "width": "fill_container",
+                          "fill": "$bg-cream",
+                          "cornerRadius": 16,
+                          "layout": "vertical",
+                          "gap": 10,
+                          "padding": 16,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "VF8to",
+                              "name": "Icon Ring",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "$honey-gold",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon",
+                                  "id": "Mj9MW",
+                                  "name": "Icon",
+                                  "width": 20,
+                                  "height": 20,
+                                  "icon": "map-pin",
+                                  "library": "lucide",
+                                  "fill": "$text-brown"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "KGjro",
+                              "name": "Label",
+                              "fill": "$text-brown",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Local to the Delta",
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "MjcrQ",
+                          "name": "Family Owned",
+                          "width": "fill_container",
+                          "fill": "$bg-cream",
+                          "cornerRadius": 16,
+                          "layout": "vertical",
+                          "gap": 10,
+                          "padding": 16,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "eavLQ",
+                              "name": "Icon Ring",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "$honey-gold",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon",
+                                  "id": "w89vh",
+                                  "name": "Icon",
+                                  "width": 20,
+                                  "height": 20,
+                                  "icon": "heart",
+                                  "library": "lucide",
+                                  "fill": "$text-brown"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "q7Uos",
+                              "name": "Label",
+                              "fill": "$text-brown",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Family Owned",
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "tkhvC",
+          "name": "Shop Section",
+          "width": "fill_container",
+          "fill": "$bg-cream",
+          "layout": "vertical",
+          "gap": 56,
+          "padding": [
+            96,
+            100,
+            110,
+            100
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "dSPoD",
+              "name": "Shop Header",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Nbl9L",
+                  "name": "Eyebrow",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "wMw69",
+                      "name": "Jar Icon",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "hexagon",
+                      "library": "lucide",
+                      "fill": "$honey-amber"
+                    },
+                    {
+                      "type": "text",
+                      "id": "M6kzu",
+                      "name": "Eyebrow Text",
+                      "fill": "$honey-amber",
+                      "content": "PICK YOUR JAR",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "800",
+                      "letterSpacing": 1.5
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "H0dpt",
+                  "name": "Heading",
+                  "fill": "$text-brown",
+                  "content": "Sweet Sizes for Every Table",
+                  "textAlign": "center",
+                  "fontFamily": "$font-head",
+                  "fontSize": 46,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "FsO3g",
+                  "name": "Subtitle",
+                  "fill": "$text-soft",
+                  "textGrowth": "fixed-width",
+                  "width": 620,
+                  "content": "From a little taste to the big honey-lover's jar—every drop is raw, unfiltered, and straight from our Delta hives.",
+                  "lineHeight": 1.5,
+                  "textAlign": "center",
+                  "fontFamily": "$font-body",
+                  "fontSize": 17,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "RCfWl",
+              "name": "Jar Grid",
+              "width": "fill_container",
+              "gap": 28,
+              "children": [
+                {
+                  "id": "XJG9m",
+                  "type": "ref",
+                  "ref": "YQVGd",
+                  "name": "Quarter Pint Card",
+                  "width": "fill_container",
+                  "descendants": {
+                    "m8L32": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1606178060181-1a19b3b75798?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODY2ODA0Mjd8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "kq7Fc": {
+                      "content": "4 oz"
+                    },
+                    "XKH56": {
+                      "content": "Quarter Pint"
+                    },
+                    "qzyre": {
+                      "content": "A little taste of gold—perfect for gifting or sampling.",
+                      "enabled": false
+                    },
+                    "hqgyR": {
+                      "layout": "vertical",
+                      "flipX": false,
+                      "flipY": false,
+                      "width": 104,
+                      "height": "fit_content",
+                      "x": 24,
+                      "y": 98
+                    },
+                    "S9eDQR": {
+                      "content": "$6"
+                    }
+                  }
+                },
+                {
+                  "id": "ZaB35",
+                  "type": "ref",
+                  "ref": "YQVGd",
+                  "name": "Half Pint Card",
+                  "width": "fill_container",
+                  "descendants": {
+                    "m8L32": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1594813591867-02e797aa4581?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODY2ODA0Mjd8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "kq7Fc": {
+                      "content": "8 oz"
+                    },
+                    "XKH56": {
+                      "content": "Half Pint"
+                    },
+                    "qzyre": {
+                      "content": "The pantry starter for toast, tea, and warm biscuits."
+                    },
+                    "S9eDQR": {
+                      "content": "$10"
+                    }
+                  }
+                },
+                {
+                  "id": "KkgYJ",
+                  "type": "ref",
+                  "ref": "YQVGd",
+                  "name": "Pint Card",
+                  "width": "fill_container",
+                  "descendants": {
+                    "m8L32": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1596167175550-19b780c8b461?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODY2ODA0Mjh8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "kq7Fc": {
+                      "content": "16 oz"
+                    },
+                    "XKH56": {
+                      "content": "Pint"
+                    },
+                    "qzyre": {
+                      "content": "Just right for daily drizzling, baking, and sweet tea."
+                    },
+                    "S9eDQR": {
+                      "content": "$16"
+                    }
+                  }
+                },
+                {
+                  "id": "dRwx4",
+                  "type": "ref",
+                  "ref": "YQVGd",
+                  "name": "Quart Card",
+                  "width": "fill_container",
+                  "descendants": {
+                    "m8L32": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1613548058193-1cd24c1bebcf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODY2ODA0Mjl8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "kq7Fc": {
+                      "content": "32 oz"
+                    },
+                    "XKH56": {
+                      "content": "Quart"
+                    },
+                    "qzyre": {
+                      "content": "The big jar for true honey lovers, bakers, and canning."
+                    },
+                    "S9eDQR": {
+                      "content": "$28"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "U0DlP",
+          "name": "Footer Section",
+          "width": "fill_container",
+          "fill": "$bg-cream",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "ysfp8",
+              "name": "CTA Banner",
+              "width": "fill_container",
+              "fill": "$honey-deep",
+              "gap": 40,
+              "padding": [
+                56,
+                100
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Dkevj",
+                  "name": "CTA Text",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "D2HUX",
+                      "name": "CTA Heading",
+                      "fill": "$white",
+                      "content": "Ready for a jar of gold?",
+                      "fontFamily": "$font-head",
+                      "fontSize": 38,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "fWrJJ",
+                      "name": "CTA Sub",
+                      "fill": "$bg-cream-deep",
+                      "textGrowth": "fixed-width",
+                      "width": 520,
+                      "content": "Order online for local pickup in Shaw, or say hello at the Saturday farmers market.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$font-body",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "UC1En",
+                  "name": "CTA Button",
+                  "fill": "$honey-gold",
+                  "cornerRadius": 16,
+                  "gap": 10,
+                  "padding": [
+                    16,
+                    28
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "ZKcJE",
+                      "name": "Cart Icon",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "shopping-basket",
+                      "library": "lucide",
+                      "fill": "$text-brown"
+                    },
+                    {
+                      "type": "text",
+                      "id": "jEcvQ",
+                      "name": "CTA Btn Label",
+                      "fill": "$text-brown",
+                      "content": "Order Your Honey",
+                      "fontFamily": "$font-body",
+                      "fontSize": 16,
+                      "fontWeight": "800"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "JP1NS",
+              "name": "Footer Main",
+              "width": "fill_container",
+              "fill": "$text-brown",
+              "gap": 64,
+              "padding": [
+                64,
+                100,
+                40,
+                100
+              ],
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "glhpc",
+                  "name": "Brand Col",
+                  "width": 360,
+                  "layout": "vertical",
+                  "gap": 14,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "B003q",
+                      "name": "Brand Row",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "q2iSie",
+                          "name": "Bee",
+                          "width": 28,
+                          "height": 28,
+                          "icon": "hexagon",
+                          "library": "lucide",
+                          "fill": "$honey-gold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "D7Jrbc",
+                          "name": "Brand Name",
+                          "fill": "$white",
+                          "content": "Big Blue Barn Farm",
+                          "fontFamily": "$font-head",
+                          "fontSize": 24,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "QxHuz",
+                      "name": "Brand Blurb",
+                      "fill": "$bg-cream-deep",
+                      "textGrowth": "fixed-width",
+                      "width": 340,
+                      "content": "Raw, unfiltered honey raised with love by our family in the heart of the Mississippi Delta.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "a1EJ8G",
+                  "name": "Visit Us Col",
+                  "width": 240,
+                  "layout": "vertical",
+                  "gap": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "U3Jxhx",
+                      "name": "Col Title",
+                      "fill": "$honey-gold",
+                      "content": "VISIT US",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "800",
+                      "letterSpacing": 1.2
+                    },
+                    {
+                      "type": "text",
+                      "id": "WXPO6",
+                      "name": "Item",
+                      "fill": "$bg-cream-deep",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "Shaw, Mississippi",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "WWxAJ",
+                      "name": "Item",
+                      "fill": "$bg-cream-deep",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "Bolivar County, Delta",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "WIXxi",
+                      "name": "Item",
+                      "fill": "$bg-cream-deep",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "Local pickup available",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "J0SjQ",
+                  "name": "Say Hello Col",
+                  "width": 240,
+                  "layout": "vertical",
+                  "gap": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "koVSA",
+                      "name": "Col Title",
+                      "fill": "$honey-gold",
+                      "content": "SAY HELLO",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "800",
+                      "letterSpacing": 1.2
+                    },
+                    {
+                      "type": "text",
+                      "id": "O2Xgdb",
+                      "name": "Item",
+                      "fill": "$bg-cream-deep",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "hello@bigbluebarnfarm.com",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "FTAIA",
+                      "name": "Item",
+                      "fill": "$bg-cream-deep",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "(662) 555-0142",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "spkaz",
+                      "name": "Item",
+                      "fill": "$bg-cream-deep",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "Sat Farmers Market, 8am–1pm",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "o0CAD1",
+              "name": "Bottom Bar",
+              "width": "fill_container",
+              "fill": "$text-brown",
+              "padding": [
+                0,
+                100,
+                36,
+                100
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "k6zVS",
+                  "name": "Copyright",
+                  "fill": "$text-soft",
+                  "content": "© 2026 Big Blue Barn Farm · Shaw, MS",
+                  "fontFamily": "$font-body",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "KGsw5",
+                  "name": "Tagline",
+                  "fill": "$text-soft",
+                  "content": "Made with 🍯 in the Delta",
+                  "fontFamily": "$font-body",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "YQVGd",
+      "x": 1560,
+      "y": 0,
+      "name": "Jar Card",
+      "reusable": true,
+      "clip": true,
+      "width": 320,
+      "fill": "$white",
+      "cornerRadius": 24,
+      "stroke": "$bg-cream-deep",
+      "strokeWidth": 2,
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "shF3p",
+          "name": "Image Wrap",
+          "clip": true,
+          "width": "fill_container",
+          "height": 230,
+          "fill": "$bg-cream-deep",
+          "layout": "vertical",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "m8L32",
+              "name": "Jar Image",
+              "fill": "$bg-cream-deep",
+              "width": 320,
+              "height": 230
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "dJEkN",
+          "name": "Card Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            24,
+            24,
+            26,
+            24
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "NMOqb",
+              "name": "Volume Badge",
+              "fill": "$bg-cream",
+              "cornerRadius": 20,
+              "padding": [
+                6,
+                12
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "kq7Fc",
+                  "name": "Volume",
+                  "fill": "$honey-amber",
+                  "content": "16 oz",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "XKH56",
+              "name": "Size Name",
+              "fill": "$text-brown",
+              "content": "Pint",
+              "fontFamily": "$font-head",
+              "fontSize": 26,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "qzyre",
+              "name": "Desc",
+              "fill": "$text-soft",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Just right for daily drizzling and sweet tea.",
+              "lineHeight": 1.4,
+              "fontFamily": "$font-body",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "hqgyR",
+              "name": "Price Row",
+              "width": "fill_container",
+              "padding": [
+                14,
+                0,
+                0,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "S9eDQR",
+                  "name": "Price",
+                  "fill": "$honey-deep",
+                  "content": "$16",
+                  "fontFamily": "$font-head",
+                  "fontSize": 24,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "Ca0DO",
+                  "name": "Add Button",
+                  "fill": "$honey-gold",
+                  "cornerRadius": 14,
+                  "gap": 8,
+                  "padding": [
+                    11,
+                    18
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "q558cW",
+                      "name": "Plus Icon",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "plus",
+                      "library": "lucide",
+                      "fill": "$text-brown"
+                    },
+                    {
+                      "type": "text",
+                      "id": "SMOoG",
+                      "name": "Add Label",
+                      "fill": "$text-brown",
+                      "content": "Add",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "bg-cream": {
+      "type": "color",
+      "value": "#FDF4E3"
+    },
+    "bg-cream-deep": {
+      "type": "color",
+      "value": "#F7E7C7"
+    },
+    "honey-gold": {
+      "type": "color",
+      "value": "#E9A730"
+    },
+    "honey-amber": {
+      "type": "color",
+      "value": "#C97C1D"
+    },
+    "honey-deep": {
+      "type": "color",
+      "value": "#8A4B12"
+    },
+    "text-brown": {
+      "type": "color",
+      "value": "#3E2A16"
+    },
+    "text-soft": {
+      "type": "color",
+      "value": "#6E5638"
+    },
+    "leaf-green": {
+      "type": "color",
+      "value": "#6E8B4B"
+    },
+    "white": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "font-head": {
+      "type": "string",
+      "value": "Fraunces"
+    },
+    "font-body": {
+      "type": "string",
+      "value": "Nunito Sans"
+    }
+  },
+  "fileToken": "aa758435-3155-4f5e-9224-73190bae9cbd"
+}

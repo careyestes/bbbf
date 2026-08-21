@@ -1,0 +1,61 @@
+.form {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 28rem;
+}
+
+.row {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+.input {
+  padding: 0.75rem 0.85rem;
+  border: 2px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+
+.btn {
+  border: 1px solid var(--color-honey);
+  border-radius: var(--radius-sm);
+  background: var(--color-honey);
+  color: var(--color-on-honey);
+  font-weight: 700;
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  justify-self: start;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--color-honey-hover);
+  transform: translateY(-1px);
+}
+
+.btn:focus-visible:not(:disabled) {
+  background: var(--color-honey-hover);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.message {
+  font-size: 0.95rem;
+}
+
+.ok {
+  color: var(--color-accent);
+}
+
+.err {
+  color: var(--color-error);
+}

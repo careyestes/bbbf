@@ -1,0 +1,284 @@
+.hero {
+  --hero-pad-x: clamp(1.25rem, 3.5vw, 2.75rem);
+  --hero-pad-b: clamp(1.25rem, 3vh, 2.5rem);
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  color: var(--color-white);
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #0c0a06 url("/images/hero-bees-1.jpg") center / cover no-repeat;
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.videoActive {
+  opacity: 1;
+}
+
+.veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      105deg,
+      rgba(20, 14, 8, 0.58) 0%,
+      rgba(20, 14, 8, 0.28) 55%,
+      rgba(20, 14, 8, 0.2) 100%
+    ),
+    linear-gradient(to top, rgba(12, 10, 6, 0.55) 0%, transparent 35%);
+}
+
+.videoToggle {
+  position: absolute;
+  z-index: 3;
+  left: var(--hero-pad-x);
+  bottom: var(--hero-pad-b);
+  padding: 0.45rem 0.8rem;
+  border: 2px solid var(--color-white);
+  border-radius: var(--radius-sm);
+  background: rgba(12, 10, 6, 0.82);
+  color: var(--color-white);
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.videoToggle:focus-visible {
+  outline-color: var(--color-honey);
+  outline-offset: 3px;
+}
+
+.shell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  min-height: 100svh;
+  padding:
+    calc(var(--header-h) + 0.35rem)
+    var(--hero-pad-x)
+    var(--hero-pad-b);
+}
+
+.main {
+  flex: 1;
+  display: grid;
+  gap: 1.75rem;
+  align-items: start;
+  min-height: 0;
+  width: min(100%, var(--max));
+  margin-inline: auto;
+}
+
+.copy {
+  --origin-x: 30%;
+  --origin-y: 40%;
+  --tilt-x: 5deg;
+  --tilt-y: 3deg;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 22ch;
+  perspective: 70em;
+  perspective-origin: var(--origin-x) var(--origin-y);
+}
+
+.honey3d {
+  --layer-offset: -0.03em;
+  display: block;
+  margin: 0;
+  font-family: var(--font-headline);
+  font-weight: 400;
+  font-size: clamp(3.5rem, 18vw, 5.75rem);
+  line-height: 0.84;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.stack {
+  display: block;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.layer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--color-on-honey);
+  transform: translateZ(calc(var(--i) * var(--layer-offset)));
+  transform-style: preserve-3d;
+}
+
+.layer:not(.face) {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.face {
+  position: relative;
+  color: var(--color-honey);
+  -webkit-text-stroke: 0.035em var(--color-on-honey);
+  paint-order: stroke fill;
+}
+
+.layer:nth-child(n + 5) {
+  color: var(--color-on-honey);
+}
+
+.layer:nth-child(n + 8) {
+  color: var(--color-on-honey);
+  -webkit-text-stroke: 0.02em var(--color-on-honey);
+}
+
+.layer:nth-child(n + 11) {
+  color: var(--color-on-honey);
+  -webkit-text-stroke: 0.045em var(--color-on-honey);
+}
+
+.layer:nth-child(n + 14) {
+  color: var(--color-on-honey);
+  -webkit-text-stroke: 0.06em var(--color-on-honey);
+}
+
+/* .layer:last-child {
+  -webkit-text-stroke: 0.08em rgba(17, 17, 17, 0.4);
+} */
+
+.line {
+  display: block;
+}
+
+.shop {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 34rem;
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
+/* Large desktop: locked full-viewport composition like the screenshot */
+@media (min-width: 1100px) {
+  .hero {
+    height: 100svh;
+    min-height: 100svh;
+    overflow: hidden;
+  }
+
+  .shell {
+    height: 100%;
+    min-height: 0;
+    padding-top: calc(var(--header-h) + 0.15rem);
+  }
+
+  .main {
+    grid-template-columns: minmax(0, 1fr) minmax(26rem, 38rem);
+    gap: clamp(1.5rem, 3vw, 3.5rem);
+    align-items: flex-start;
+  }
+
+  .copy {
+    max-width: none;
+    gap: clamp(1.25rem, 2.5vh, 2rem);
+    padding: 5rem 0 0 6rem;
+  }
+
+  .honey3d {
+    /* Size to fit four Modak lines — dominant left column */
+    font-size: clamp(5.25rem, 16.5vh, 11.25rem);
+    line-height: 0.8;
+  }
+
+  .shop {
+    max-width: none;
+    width: 100%;
+    height: 100%;
+    gap: clamp(0.75rem, 1.4vh, 1.15rem);
+    align-self: center;
+    padding: 6rem 8rem 10rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .main {
+    grid-template-columns: minmax(0, 0.9fr) minmax(28rem, 70rem);
+  }
+
+  .honey3d {
+    font-size: calc(var(--fluid-6) + 10rem);
+  }
+}
+
+/* Tablet */
+@media (max-width: 1099px) and (min-width: 720px) {
+  .shell {
+    padding-bottom: clamp(2.5rem, 6vh, 4rem);
+  }
+
+  .main {
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem);
+    align-items: start;
+    gap: 1.5rem;
+  }
+
+  .honey3d {
+    font-size: clamp(3.75rem, 10vw, 6rem);
+  }
+
+  .shop {
+    max-width: none;
+  }
+}
+
+@media (max-width: 719px) {
+  .shell {
+    padding-top: calc(var(--header-h) + 0.5rem);
+    padding-bottom: clamp(2.75rem, 8vw, 4.5rem);
+  }
+
+  .main {
+    gap: 1.5rem;
+  }
+
+  .shop {
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video,
+  .videoActive {
+    opacity: 0;
+    transition: none;
+  }
+
+  .copy {
+    perspective: none;
+  }
+
+  .honey3d {
+    transform: none;
+    will-change: auto;
+  }
+}
