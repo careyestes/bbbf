@@ -3,13 +3,21 @@ import { drizzle } from "drizzle-orm/libsql";
 import * as schema from "./schema";
 
 function databaseUrl() {
-  // Empty string is common when a Vercel env var exists but isn't filled in;
-  // treat it like unset so we don't pass "" to libsql.
-  return process.env.DATABASE_URL || "file:./data/honey.db";
+  // Prefer app names; fall back to Vercel Turso integration names.
+  // Trim — pasted dashboard values often include a trailing newline (%0A).
+  const raw =
+    process.env.DATABASE_URL?.trim() ||
+    process.env.BBBF_TURSO_DATABASE_URL?.trim() ||
+    "";
+  return raw || "file:./data/honey.db";
 }
 
 function databaseAuthToken() {
-  return process.env.DATABASE_AUTH_TOKEN || undefined;
+  const raw =
+    process.env.DATABASE_AUTH_TOKEN?.trim() ||
+    process.env.BBBF_TURSO_AUTH_TOKEN?.trim() ||
+    "";
+  return raw || undefined;
 }
 
 function createDb() {
