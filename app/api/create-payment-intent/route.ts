@@ -38,6 +38,54 @@ function publicOrderId() {
   return `BBBF-${randomBytes(4).toString("hex").toUpperCase()}`;
 }
 
+function isMissingStripeCustomer(err: unknown): boolean {
+  return (
+    typeof err === "object" &&
+    err !== null &&
+    "code" in err &&
+    (err as { code?: string }).code === "resource_missing"
+  );
+}
+
+/** Reuse a stored Stripe customer, or create one if missing (e.g. Test → Live). */
+async function resolveStripeCustomerId(
+  stripe: ReturnType<typeof getStripe>,
+  args: {
+    customerId: number;
+    stripeCustomerId: string | null;
+    email: string;
+    name: string;
+    phone?: string;
+  },
+): Promise<string> {
+  const { customerId, email, name, phone } = args;
+  let stripeCustomerId = args.stripeCustomerId;
+
+  if (stripeCustomerId) {
+    try {
+      const existing = await stripe.customers.retrieve(stripeCustomerId);
+      if (!("deleted" in existing && existing.deleted)) {
+        return stripeCustomerId;
+      }
+    } catch (err) {
+      if (!isMissingStripeCustomer(err)) throw err;
+    }
+  }
+
+  const stripeCustomer = await stripe.customers.create({
+    email,
+    name,
+    phone,
+    metadata: { farmCustomerId: String(customerId) },
+  });
+  stripeCustomerId = stripeCustomer.id;
+  await db
+    .update(customers)
+    .set({ stripeCustomerId })
+    .where(eq(customers.id, customerId));
+  return stripeCustomerId;
+}
+
 export async function POST(request: Request) {
   try {
     if (!process.env.STRIPE_SECRET_KEY) {
@@ -127,19 +175,14 @@ export async function POST(request: Request) {
       customerId = inserted[0].id;
     }
 
-    if (!stripeCustomerId) {
-      const stripeCustomer = await stripe.customers.create({
-        email: data.email.toLowerCase(),
-        name: data.name,
-        phone: data.phone || undefined,
-        metadata: { farmCustomerId: String(customerId) },
-      });
-      stripeCustomerId = stripeCustomer.id;
-      await db
-        .update(customers)
-        .set({ stripeCustomerId })
-        .where(eq(customers.id, customerId));
-    }
+    // Stored IDs from Test mode are invalid after switching to Live keys.
+    stripeCustomerId = await resolveStripeCustomerId(stripe, {
+      customerId,
+      stripeCustomerId,
+      email: data.email.toLowerCase(),
+      name: data.name,
+      phone: data.phone || undefined,
+    });
 
     const now = new Date().toISOString();
     await db.insert(orders).values({
