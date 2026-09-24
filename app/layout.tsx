@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   description:
     "Pure raw honey from Big Blue Barn Farm in Shaw, Mississippi. Harvested from our hives, extracted from the comb, and gently strained. Never heated or pasteurized.",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://bigbluebarn.farm",
+    process.env.NEXT_PUBLIC_SITE_URL || "https://bigbluebarn.farm",
   ),
   icons: {
     icon: [
