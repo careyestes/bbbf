@@ -2,9 +2,19 @@ import { createClient } from "@libsql/client";
 import { drizzle } from "drizzle-orm/libsql";
 import * as schema from "./schema";
 
+function databaseUrl() {
+  // Empty string is common when a Vercel env var exists but isn't filled in;
+  // treat it like unset so we don't pass "" to libsql.
+  return process.env.DATABASE_URL || "file:./data/honey.db";
+}
+
+function databaseAuthToken() {
+  return process.env.DATABASE_AUTH_TOKEN || undefined;
+}
+
 function createDb() {
-  const url = process.env.DATABASE_URL ?? "file:./data/honey.db";
-  const authToken = process.env.DATABASE_AUTH_TOKEN;
+  const url = databaseUrl();
+  const authToken = databaseAuthToken();
 
   const client = createClient(
     authToken ? { url, authToken } : { url },
@@ -24,8 +34,8 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 export async function ensureSchema() {
-  const url = process.env.DATABASE_URL ?? "file:./data/honey.db";
-  const authToken = process.env.DATABASE_AUTH_TOKEN;
+  const url = databaseUrl();
+  const authToken = databaseAuthToken();
   const client = createClient(
     authToken ? { url, authToken } : { url },
   );
