@@ -3,7 +3,7 @@
 }
 
 .shell {
-  width: min(100% - 2.5rem, 52rem);
+  width: min(100% - 2.5rem, 60rem);
   margin-inline: auto;
 }
 
@@ -229,6 +229,7 @@
 .totalRow {
   display: flex;
   justify-content: space-between;
+  font-size: 1rem;
 }
 
 .grand {
