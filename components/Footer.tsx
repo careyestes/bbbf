@@ -24,14 +24,14 @@ export function Footer() {
             </p>
           </div>
           <div>
-            <p className={styles.heading}>VISIT US</p>
+            <h2 className={styles.heading}>Visit us</h2>
             <ul className={styles.list}>
               <li>{formatAddress()}</li>
               <li>We ship nationwide</li>
             </ul>
           </div>
-          <div>
-            <p className={styles.heading}>SAY HELLO</p>
+          <nav aria-label="Contact">
+            <h2 className={styles.heading}>Say hello</h2>
             <ul className={styles.list}>
               <li>
                 <a href={`mailto:${FARM.email}`}>{FARM.email}</a>
@@ -43,7 +43,7 @@ export function Footer() {
                 <Link href="/reorder">Reorder honey</Link>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
         <div className={`container ${styles.bottom}`}>
           <p className={styles.copy}>

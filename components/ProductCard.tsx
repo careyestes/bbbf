@@ -32,14 +32,14 @@ export function ProductCard({
 
   return (
     <article
-      className={`${styles.card} ${compact ? styles.compact : ""} ${highlight ? styles.highlight : ""} ${!canBuy ? styles.cardSoldOut : ""}`}
+      className={`${styles.card} ${compact ? styles.compact : ""} ${highlight ? styles.highlight : ""}`}
     >
       <div className={styles.media}>
         <Image
           src={product.image}
           alt={`${product.name} jar of honey`}
           fill
-          sizes="(max-width: 640px) 50vw, 280px"
+          sizes="(max-width: 799px) 92vw, (max-width: 1099px) 45vw, (max-width: 1400px) 22vw, 280px"
           className={styles.mediaImg}
         />
         {status === "out" && (
@@ -51,7 +51,7 @@ export function ProductCard({
       <div className={styles.body}>
         <div className={styles.info}>
           <span className={styles.volume}>{product.volumeOz} oz</span>
-          <p className={styles.name}>{product.name}</p>
+          <h2 className={styles.name}>{product.name}</h2>
           <p
             className={`${styles.stockCount} ${status === "low" ? styles.stockCountLow : ""} ${status === "out" ? styles.stockCountOut : ""}`}
           >
@@ -64,7 +64,9 @@ export function ProductCard({
           type="button"
           className={`${styles.add} ${justAdded === product.id ? styles.added : ""}`}
           disabled={!canBuy}
-          onClick={() => addItem(product.id as ProductId, 1)}
+          onClick={() => {
+            if (canBuy) addItem(product.id as ProductId, 1);
+          }}
           aria-label={
             canBuy
               ? `Add ${product.name} for ${formatPrice(price)}`

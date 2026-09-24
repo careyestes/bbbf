@@ -11,7 +11,7 @@ type Props = {
 
 export function Hero({ stock }: Props) {
   return (
-    <section className={styles.hero} aria-labelledby="hero-heading">
+    <section className={styles.hero}>
       <HeroVideos />
 
       <div className={styles.shell}>

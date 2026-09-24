@@ -2,6 +2,11 @@
   padding: calc(var(--header-h) + 1rem) 0 4rem;
 }
 
+.shell {
+  width: min(100% - 2.5rem, 52rem);
+  margin-inline: auto;
+}
+
 .title {
   font-size: clamp(1.8rem, 4vw, 2.4rem);
   margin-bottom: 0.35rem;
@@ -10,6 +15,29 @@
 .lede {
   color: var(--color-muted);
   margin-bottom: 1.75rem;
+}
+
+.stockAlert {
+  margin-bottom: 1.25rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--color-error) 35%, transparent);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-error) 8%, var(--color-surface));
+  color: var(--color-error);
+  font-size: 0.92rem;
+}
+
+.stockAlert p {
+  margin: 0;
+}
+
+.stockAlert p + p {
+  margin-top: 0.35rem;
+}
+
+.stockAlert a {
+  color: var(--color-link);
+  font-weight: 700;
 }
 
 .layout {
@@ -88,11 +116,13 @@
 
 .checkInput {
   position: absolute;
-  opacity: 0;
   width: 1.15rem;
   height: 1.15rem;
   margin: 0.1rem 0 0;
+  opacity: 0;
   cursor: pointer;
+  /* Keep in tab order / hit target over the custom box */
+  z-index: 1;
 }
 
 .checkBox {
@@ -184,6 +214,10 @@
   padding: 0.45rem 0;
   border-bottom: 1px solid var(--color-border);
   font-size: 0.95rem;
+}
+
+.summaryLineUnavailable {
+  color: var(--color-error);
 }
 
 .totals {

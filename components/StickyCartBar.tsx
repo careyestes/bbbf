@@ -11,7 +11,7 @@ export function StickyCartBar() {
   return (
     <div className={`${styles.bar} ${styles.barVisible}`}>
       <div className={styles.inner}>
-        <div>
+        <div role="status" aria-live="polite" aria-atomic="true">
           <p className={styles.meta}>
             {itemCount} item{itemCount === 1 ? "" : "s"} in cart
           </p>

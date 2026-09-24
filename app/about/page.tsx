@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { WaitlistForm } from "@/components/WaitlistForm";
-import { FARM, formatAddress } from "@/lib/config";
+import { FARM } from "@/lib/config";
 import styles from "./about.module.css";
 
 export const metadata: Metadata = {
@@ -10,8 +10,6 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const mapQuery = encodeURIComponent(formatAddress());
-
   return (
     <div className={styles.page}>
       <section className={styles.heroBand}>
@@ -52,19 +50,18 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <aside>
-            <section id="waitlist" className={styles.waitlist}>
-              <h2>Honey flow alerts</h2>
-              <p>
-                Join the list and we&apos;ll email you when jars are ready —
-                perfect for reordering without hunting us down at market.
-              </p>
-              <WaitlistForm />
-            </section>
-          </aside>
+          <section
+            id="waitlist"
+            className={styles.waitlist}
+            aria-labelledby="about-waitlist-heading"
+          >
+            <h2 id="about-waitlist-heading">Honey flow alerts</h2>
+            <p>
+              Join the list and we&apos;ll email you when jars are ready.
+            </p>
+            <WaitlistForm />
+          </section>
         </div>
-
-        
       </div>
     </div>
   );

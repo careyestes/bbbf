@@ -108,6 +108,8 @@
   display: grid;
   width: 100%;
   overflow: hidden;
+  border: 2px solid var(--color-honey);
+  border-radius: var(--radius-lg);
   animation: fadeUp 0.7s ease 0.12s both;
 }
 

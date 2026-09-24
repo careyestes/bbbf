@@ -19,7 +19,9 @@ import {
 import { shippingCentsForJarCount, totalJarCount } from "@/lib/shipping";
 import type { ThemeName } from "@/lib/theme";
 import { getStripeAppearance } from "@/lib/stripe-appearance";
+import { cartStockIssueMessage, cartStockSummary, getCartStockIssues } from "@/lib/cart-stock";
 import { useCart } from "./CartProvider";
+import { useCartStock } from "./useCartStock";
 import { useTheme } from "./ThemeProvider";
 import styles from "./CheckoutForm.module.css";
 
@@ -62,6 +64,7 @@ function formatUsPhone(value: string): string {
 
 export function CheckoutForm() {
   const { lines, subtotalCents, clearCart } = useCart();
+  const { issues, canCheckout, refresh } = useCartStock(lines);
   const { theme } = useTheme();
   const [contact, setContact] = useState<Contact>(emptyContact);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
@@ -88,12 +91,27 @@ export function CheckoutForm() {
     [lines],
   );
 
+  useEffect(() => {
+    if (issues.length > 0) {
+      setClientSecret(null);
+      setOrderPublicId(null);
+    }
+  }, [issues]);
+
   async function preparePayment() {
     setError(null);
     if (lines.length === 0) {
       setError("Your cart is empty.");
       return;
     }
+
+    const stock = await refresh();
+    const latestIssues = getCartStockIssues(lines, stock);
+    if (latestIssues.length > 0) {
+      setError(cartStockSummary(latestIssues));
+      return;
+    }
+
     if (!contact.name || !contact.email) {
       setError("Name and email are required.");
       return;
@@ -139,7 +157,7 @@ export function CheckoutForm() {
   if (lines.length === 0 && !clientSecret) {
     return (
       <div className={styles.page}>
-        <div className="container">
+        <div className={styles.shell}>
           <h1 className={styles.title}>Checkout</h1>
           <p className={styles.empty}>
             Your cart is empty. <Link href="/order">Choose a jar</Link> to
@@ -152,11 +170,22 @@ export function CheckoutForm() {
 
   return (
     <div className={styles.page}>
-      <div className="container">
+      <div className={styles.shell}>
         <h1 className={styles.title}>Checkout</h1>
         <p className={styles.lede}>
           Pay securely on this page — Apple Pay, Google Pay, or card.
         </p>
+        {issues.length > 0 ? (
+          <div className={styles.stockAlert} role="alert">
+            {issues.map((issue) => (
+              <p key={issue.productId}>{cartStockIssueMessage(issue)}</p>
+            ))}
+            <p>
+              Remove or adjust items in your{" "}
+              <Link href="/order">cart</Link> before continuing.
+            </p>
+          </div>
+        ) : null}
         <div className={styles.layout}>
           <div className={styles.panel}>
             <h2>Your details</h2>
@@ -292,7 +321,7 @@ export function CheckoutForm() {
               <button
                 type="submit"
                 className={styles.payBtn}
-                disabled={preparing}
+                disabled={preparing || !canCheckout}
               >
                 {preparing ? "Preparing payment…" : "Continue to payment"}
               </button>
@@ -317,13 +346,23 @@ export function CheckoutForm() {
             ) : null}
           </div>
 
-          <aside className={styles.panel}>
-            <h2>Order summary</h2>
+          <section className={styles.panel} aria-labelledby="order-summary-heading">
+            <h2 id="order-summary-heading">Order summary</h2>
             {summary.map((line) =>
               line ? (
-                <div key={line.productId} className={styles.summaryLine}>
+                <div
+                  key={line.productId}
+                  className={`${styles.summaryLine} ${
+                    issues.some((issue) => issue.productId === line.productId)
+                      ? styles.summaryLineUnavailable
+                      : ""
+                  }`}
+                >
                   <span>
                     {line.quantity}× {line.name}
+                    {issues.some((issue) => issue.productId === line.productId)
+                      ? " — unavailable"
+                      : ""}
                   </span>
                   <span>
                     {formatPrice(line.unitPriceCents * line.quantity)}
@@ -349,7 +388,7 @@ export function CheckoutForm() {
                 <span>{formatPrice(totalCents)}</span>
               </div>
             </div>
-          </aside>
+          </section>
         </div>
       </div>
     </div>

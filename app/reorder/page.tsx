@@ -93,14 +93,14 @@ export default async function ReorderPage({ searchParams }: Props) {
               sizes="(max-width: 860px) 100vw, 50vw"
             />
           </div>
-          <aside className={styles.waitlist}>
-            <h2>Honey flow alerts</h2>
+          <section className={styles.waitlist} aria-labelledby="reorder-waitlist-heading">
+            <h2 id="reorder-waitlist-heading">Honey flow alerts</h2>
             <p>
               Sold out, or want a heads-up next harvest? We will email you when
               jars are ready.
             </p>
             <WaitlistForm />
-          </aside>
+          </section>
         </div>
       </div>
     </section>

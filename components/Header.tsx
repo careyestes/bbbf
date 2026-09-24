@@ -29,7 +29,9 @@ export function Header() {
             aria-label="Order Your Honey"
           >
             <BasketIcon className={styles.icon} />
-            Order<span className={styles.orderRest}> Your Honey</span>
+            <span aria-hidden="true">
+              Order<span className={styles.orderRest}> Your Honey</span>
+            </span>
           </Link>
           <ThemeToggle />
           <button
@@ -38,6 +40,7 @@ export function Header() {
             onClick={openCart}
             aria-haspopup="dialog"
             aria-expanded={isOpen}
+            aria-controls="cart-drawer"
             aria-label={
               itemCount === 1
                 ? "Open cart, 1 item"

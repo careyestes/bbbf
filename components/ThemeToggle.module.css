@@ -3,8 +3,8 @@
   position: relative;
   align-items: center;
   justify-content: center;
-  width: calc(var(--fluid-0) * 2.5);
-  height: calc(var(--fluid-0) * 2.5);
+  width: var(--nav-btn-size, calc(var(--fluid-0) * 2.5 + 6px));
+  height: var(--nav-btn-size, calc(var(--fluid-0) * 2.5 + 6px));
   min-width: 24px;
   min-height: 24px;
   padding: 0;
@@ -13,6 +13,7 @@
   background: var(--color-ink);
   color: var(--color-bg);
   cursor: pointer;
+  box-sizing: border-box;
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
@@ -21,7 +22,8 @@
 }
 
 .toggle:hover {
-  color: var(--color-honey);
+  background: var(--color-honey);
+  color: var(--color-on-honey);
   transform: translateY(-1px);
 }
 
@@ -35,8 +37,7 @@
   display: none;
 }
 
-:global(html[data-theme="dark"]) .iconMoon,
-:global(html[data-theme="dark"]) .labelLight {
+:global(html[data-theme="dark"]) .iconMoon {
   display: none;
 }
 
@@ -44,35 +45,12 @@
   display: block;
 }
 
-.labelLight,
-.labelDark {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.labelDark {
-  display: none;
-}
-
-:global(html[data-theme="dark"]) .labelDark {
-  display: block;
-}
-
 @media (prefers-color-scheme: dark) {
-  :global(html:not([data-theme="light"])) .iconMoon,
-  :global(html:not([data-theme="light"])) .labelLight {
+  :global(html:not([data-theme="light"])) .iconMoon {
     display: none;
   }
 
-  :global(html:not([data-theme="light"])) .iconSun,
-  :global(html:not([data-theme="light"])) .labelDark {
+  :global(html:not([data-theme="light"])) .iconSun {
     display: block;
   }
 }

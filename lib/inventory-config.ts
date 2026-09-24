@@ -23,10 +23,10 @@ export type InventorySeed = {
 };
 
 export const INVENTORY_SEED: Record<ProductId, InventorySeed> = {
-  "quarter-pint": { quantity: 24, lowStockAt: 5 },
-  "half-pint": { quantity: 24, lowStockAt: 5 },
-  pint: { quantity: 18, lowStockAt: 4 },
-  quart: { quantity: 12, lowStockAt: 3 },
+  "quarter-pint": { quantity: 25, lowStockAt: 5 },
+  "half-pint": { quantity: 23, lowStockAt: 5 },
+  pint: { quantity: 11, lowStockAt: 4 },
+  quart: { quantity: 6, lowStockAt: 3 },
 };
 
 /** Default low-stock threshold if a size is missing from seed */

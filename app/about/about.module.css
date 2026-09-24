@@ -48,7 +48,9 @@
   font-size: var(--fluid-4);
   margin-bottom: 0.4rem;
   color: var(--color-white);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.95),
+    0 0 1.25rem rgba(0, 0, 0, 0.65);
 }
 
 .heroContent p {
@@ -124,6 +126,7 @@
 .waitlist {
   padding: 1.75rem;
   background: var(--color-honey-soft);
+  border: 2px solid var(--color-honey);
   border-radius: var(--radius-lg);
 }
 

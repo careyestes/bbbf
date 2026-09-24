@@ -7,7 +7,7 @@
  * flat-rate by total jar count.
  *
  * Benchmarks (Mississippi direct-to-consumer, 2026):
- *   farmers-market mid-market  $0.68–$0.97/oz
+ *   mid-market direct retail   $0.68–$0.97/oz
  *   local apiary pint jars     $12–$18 per 16 oz
  *   3 lb / 5 lb bulk jugs      $0.31–$0.75/oz
  * ============================================================
@@ -18,10 +18,10 @@
  * First tier whose `maxOz` covers the volume wins.
  */
 export const PRICE_PER_OZ_TIERS = [
-  { maxOz: 4, pricePerOz: 1.25 }, // 4 oz  → $5
-  { maxOz: 8, pricePerOz: 1.0 }, // 8 oz  → $8
-  { maxOz: 16, pricePerOz: 0.875 }, // 16 oz → $14
-  { maxOz: Infinity, pricePerOz: 0.75 }, // 32 oz → $24
+  { maxOz: 4, pricePerOz: 2.0 }, // 4 oz → $8.00
+  { maxOz: 8, pricePerOz: 1.5 }, // 8 oz → $12.00
+  { maxOz: 16, pricePerOz: 1.25 }, // 16 oz → $20.00
+  { maxOz: 32, pricePerOz: 1.0 }, // 32 oz → $32.00
 ] as const;
 
 /**
@@ -55,7 +55,6 @@ export const LOWEST_PRICE_PER_OZ = Math.min(
 export const SHIPPING_TIERS = [
   { maxJars: 2, rateCents: 800 }, // 1–2 jars → $8
   { maxJars: 4, rateCents: 1200 }, // 3–4 jars → $12
-  { maxJars: Infinity, rateCents: 1800 }, // 5+ jars → $18
 ] as const;
 
 /** Price in cents for a given fluid-ounce volume. */

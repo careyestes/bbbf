@@ -1,5 +1,6 @@
 import { FAQ } from "@/components/FAQ";
 import { Hero } from "@/components/Hero";
+import { ImageDivider } from "@/components/ImageDivider";
 import { getStockMap } from "@/lib/inventory";
 
 export const dynamic = "force-dynamic";
@@ -10,7 +11,8 @@ export default async function HomePage() {
   return (
     <>
       <Hero stock={stock} />
-      <FAQ stock={stock} />
+      <FAQ />
+      <ImageDivider />
     </>
   );
 }

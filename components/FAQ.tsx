@@ -1,9 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import type { PublicStock } from "@/lib/inventory";
-import { PRODUCTS, type ProductId } from "@/lib/products";
-import { ProductCard } from "./ProductCard";
 import styles from "./FAQ.module.css";
 
 const FAQS = [
@@ -29,30 +26,12 @@ const FAQS = [
   },
 ];
 
-export function FAQ({ stock }: { stock: Record<ProductId, PublicStock> }) {
+export function FAQ() {
   const [open, setOpen] = useState<Record<number, boolean>>({});
 
   return (
-    <section className={styles.section} aria-labelledby="faq-heading">
-      <div className={styles.rings} aria-hidden />
-      <div className={styles.drip} aria-hidden />
-      <div className={styles.medallionScene}>
-        <div className={styles.medallion}>
-          <div className={styles.medallionInner}>
-            <p className={styles.sub}>Get the 2026 Honey Run before it&apos;s gone!</p>
-          </div>
-        </div>
-      </div>
-      <section className={`container ${styles.shop}`} aria-label="Honey jars">
-        {PRODUCTS.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            stock={stock[product.id]}
-          />
-        ))}
-      </section>
-      <div className="container">
+    <div className={styles.section}>
+      <section className={`container ${styles.faq}`} aria-labelledby="faq-heading">
         <div className={styles.header}>
           <h2 id="faq-heading">FAQ</h2>
           <p>Quick answers about ordering and keeping honey fresh.</p>
@@ -98,8 +77,8 @@ export function FAQ({ stock }: { stock: Record<ProductId, PublicStock> }) {
             );
           })}
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
 

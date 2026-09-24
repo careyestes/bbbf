@@ -1,0 +1,27 @@
+.divider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  min-height: 14rem;
+  max-height: min(42vh, 28rem);
+  overflow: hidden;
+  background: var(--color-honey-soft);
+  border-top: 2px solid var(--color-honey);
+  border-bottom: 2px solid var(--color-honey);
+}
+
+.image {
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+@media (max-width: 700px) {
+  .divider {
+    aspect-ratio: 16 / 10;
+    max-height: min(36vh, 22rem);
+  }
+
+  .image {
+    object-position: center 45%;
+  }
+}

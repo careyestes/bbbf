@@ -3,8 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useId, useRef } from "react";
+import { cartStockIssueMessage } from "@/lib/cart-stock";
 import { getProduct, formatPrice, priceCentsForProduct } from "@/lib/products";
 import { useCart } from "./CartProvider";
+import { useCartStock } from "./useCartStock";
 import styles from "./CartDrawer.module.css";
 
 const FOCUSABLE =
@@ -19,10 +21,18 @@ export function CartDrawer() {
     setQuantity,
     removeItem,
   } = useCart();
-  const drawerRef = useRef<HTMLElement>(null);
+  const { stock, issues, canCheckout, refresh } = useCartStock(lines, {
+    refreshOnMount: false,
+  });
+  const drawerRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const lastFocusRef = useRef<HTMLElement | null>(null);
   const titleId = useId();
+
+  useEffect(() => {
+    if (!isOpen) return;
+    void refresh();
+  }, [isOpen, refresh]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -76,12 +86,14 @@ export function CartDrawer() {
         onClick={closeCart}
         aria-hidden="true"
       />
-      <aside
+      <div
+        id="cart-drawer"
         ref={drawerRef}
         className={`${styles.drawer} ${isOpen ? styles.drawerOpen : ""}`}
-        role="dialog"
-        aria-modal={isOpen}
-        aria-labelledby={titleId}
+        role={isOpen ? "dialog" : undefined}
+        aria-modal={isOpen || undefined}
+        aria-labelledby={isOpen ? titleId : undefined}
+        aria-hidden={isOpen ? undefined : true}
         inert={!isOpen || undefined}
       >
         <div className={styles.head}>
@@ -92,6 +104,7 @@ export function CartDrawer() {
             className={styles.close}
             onClick={closeCart}
             aria-label="Close cart"
+            tabIndex={isOpen ? undefined : -1}
           >
             <svg viewBox="0 0 12 12" aria-hidden="true">
               <path
@@ -105,6 +118,14 @@ export function CartDrawer() {
           </button>
         </div>
         <div className={styles.body}>
+          {issues.length > 0 ? (
+            <div className={styles.stockAlert} role="alert">
+              {issues.map((issue) => (
+                <p key={issue.productId}>{cartStockIssueMessage(issue)}</p>
+              ))}
+              <p>Update your cart before checkout.</p>
+            </div>
+          ) : null}
           {lines.length === 0 ? (
             <p className={styles.empty}>
               Your cart is empty. Pick a jar size to get started.
@@ -114,8 +135,16 @@ export function CartDrawer() {
               const product = getProduct(line.productId);
               if (!product) return null;
               const unit = priceCentsForProduct(product);
+              const available = stock?.[line.productId]?.quantity ?? 0;
+              const lineIssue = issues.find(
+                (issue) => issue.productId === line.productId,
+              );
+              const atMax = available > 0 && line.quantity >= available;
               return (
-                <div key={line.productId} className={styles.line}>
+                <div
+                  key={line.productId}
+                  className={`${styles.line} ${lineIssue ? styles.lineUnavailable : ""}`}
+                >
                   <Image
                     src={product.image}
                     alt=""
@@ -128,6 +157,11 @@ export function CartDrawer() {
                     <p className={styles.lineMeta}>
                       {formatPrice(unit)} · {product.volumeOz} fl oz
                     </p>
+                    {lineIssue ? (
+                      <p className={styles.lineStockIssue}>
+                        {cartStockIssueMessage(lineIssue)}
+                      </p>
+                    ) : null}
                     <div className={styles.lineControls}>
                       <div
                         className={styles.qty}
@@ -137,6 +171,7 @@ export function CartDrawer() {
                         <button
                           type="button"
                           aria-label={`Decrease quantity of ${product.name}`}
+                          tabIndex={isOpen ? undefined : -1}
                           onClick={() =>
                             setQuantity(line.productId, line.quantity - 1)
                           }
@@ -149,6 +184,8 @@ export function CartDrawer() {
                         <button
                           type="button"
                           aria-label={`Increase quantity of ${product.name}`}
+                          disabled={atMax}
+                          tabIndex={isOpen ? undefined : -1}
                           onClick={() =>
                             setQuantity(line.productId, line.quantity + 1)
                           }
@@ -161,6 +198,7 @@ export function CartDrawer() {
                         className={styles.remove}
                         onClick={() => removeItem(line.productId)}
                         aria-label={`Remove ${product.name} from cart`}
+                        tabIndex={isOpen ? undefined : -1}
                       >
                         Remove
                       </button>
@@ -177,23 +215,33 @@ export function CartDrawer() {
             <span>{formatPrice(subtotalCents)}</span>
           </div>
           {lines.length === 0 ? (
-            <span
+            <button
+              type="button"
               className={`${styles.checkout} ${styles.checkoutDisabled}`}
-              aria-disabled="true"
+              disabled
             >
               Checkout
-            </span>
+            </button>
+          ) : !canCheckout ? (
+            <button
+              type="button"
+              className={`${styles.checkout} ${styles.checkoutDisabled}`}
+              disabled
+            >
+              Checkout unavailable
+            </button>
           ) : (
             <Link
               href="/checkout"
               className={styles.checkout}
               onClick={closeCart}
+              tabIndex={isOpen ? undefined : -1}
             >
               Checkout
             </Link>
           )}
         </div>
-      </aside>
+      </div>
     </>
   );
 }

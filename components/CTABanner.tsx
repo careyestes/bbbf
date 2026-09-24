@@ -8,8 +8,7 @@ export function CTABanner() {
         <div className={styles.text}>
           <h2 id="cta-heading">Ready for a jar of gold?</h2>
           <p>
-            Order online and we&apos;ll ship your jars, or say hello at the
-            Saturday farmers market.
+            Order online and we&apos;ll ship your jars.
           </p>
         </div>
         <Link href="/order" className={styles.btn}>

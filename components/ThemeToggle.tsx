@@ -4,13 +4,16 @@ import { useTheme } from "./ThemeProvider";
 import styles from "./ThemeToggle.module.css";
 
 export function ThemeToggle() {
-  const { toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
+  const label =
+    theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
 
   return (
     <button
       type="button"
       className={styles.toggle}
       onClick={toggleTheme}
+      aria-label={label}
     >
       <span className={styles.iconMoon} aria-hidden>
         <MoonIcon />
@@ -18,8 +21,6 @@ export function ThemeToggle() {
       <span className={styles.iconSun} aria-hidden>
         <SunIcon />
       </span>
-      <span className={styles.labelLight}>Switch to dark theme</span>
-      <span className={styles.labelDark}>Switch to light theme</span>
     </button>
   );
 }

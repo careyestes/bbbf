@@ -21,7 +21,8 @@
   --color-link: #6b5200;
   --color-leaf: #6e8b4b;
   --color-error: #b42318;
-  --color-error-soft: #a33;
+  /* Soft error tint for dark surfaces (e.g. sold-out badge on ink) */
+  --color-error-soft: #ffb4b4;
   --color-overlay: rgba(62, 42, 22, 0.45);
   --color-on-dark: #fff4b8;
   --color-inverse: #111111;
@@ -55,8 +56,14 @@
   --radius-md: 16px;
   --radius-lg: 24px;
   --radius-pill: 999px;
-  --header-h: 6.75rem;
+  --header-h: 7.75rem;
   --max: 100vw;
+}
+
+@media (min-width: 721px) {
+  :root {
+    --header-h: calc((var(--fluid-0) * 5.5) + 2.15rem);
+  }
 }
 
 /* WCAG 2.2 AA dark theme: 4.5:1 text, 3:1 UI / large text. */
