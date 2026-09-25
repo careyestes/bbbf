@@ -22,4 +22,4 @@ export function formatAddress() {
 }
 
 /** @deprecated Import from `@/lib/pricing` instead */
-export { PRICE_PER_OZ_TIERS, SHIPPING_TIERS } from "./pricing";
+export { PRICE_PER_OZ_TIERS } from "./pricing";

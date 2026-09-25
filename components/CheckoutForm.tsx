@@ -9,14 +9,20 @@ import {
 import { loadStripe } from "@stripe/stripe-js";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import {
+  FormEvent,
+  useEffect,
+  useMemo,
+  useState,
+  type HTMLAttributes,
+} from "react";
 import { FARM } from "@/lib/config";
 import {
   formatPrice,
   getProduct,
   priceCentsForProduct,
 } from "@/lib/products";
-import { shippingCentsForJarCount, totalJarCount } from "@/lib/shipping";
+import { normalizeDestinationZip } from "@/lib/shipping";
 import type { ThemeName } from "@/lib/theme";
 import { getStripeAppearance } from "@/lib/stripe-appearance";
 import { cartStockIssueMessage, cartStockSummary, getCartStockIssues } from "@/lib/cart-stock";
@@ -71,9 +77,33 @@ export function CheckoutForm() {
   const [orderPublicId, setOrderPublicId] = useState<string | null>(null);
   const [preparing, setPreparing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [quote, setQuote] = useState<{ key: string; cents: number } | null>(
+    null,
+  );
+  const [quoteError, setQuoteError] = useState<{
+    key: string;
+    message: string;
+  } | null>(null);
 
-  const shippingCents = shippingCentsForJarCount(totalJarCount(lines));
-  const totalCents = subtotalCents + shippingCents;
+  const destinationZip = normalizeDestinationZip(contact.shippingZip);
+  const quoteKey = destinationZip
+    ? `${JSON.stringify(lines)}|${destinationZip}`
+    : null;
+  const quoteReady = Boolean(quote && quote.key === quoteKey);
+  const shippingCents = quoteReady && quote ? quote.cents : null;
+  const shippingStatus = !destinationZip
+    ? "need-zip"
+    : quoteReady
+      ? "ready"
+      : quoteError?.key === quoteKey
+        ? "error"
+        : "loading";
+  const shippingError =
+    shippingStatus === "error" ? quoteError?.message ?? null : null;
+  const totalCents =
+    shippingCents == null ? null : subtotalCents + shippingCents;
+  const paymentVisible =
+    Boolean(clientSecret) && quoteReady && issues.length === 0;
 
   const summary = useMemo(
     () =>
@@ -92,11 +122,46 @@ export function CheckoutForm() {
   );
 
   useEffect(() => {
-    if (issues.length > 0) {
-      setClientSecret(null);
-      setOrderPublicId(null);
-    }
-  }, [issues]);
+    if (lines.length === 0 || !quoteKey || !destinationZip) return;
+
+    const controller = new AbortController();
+    const timer = window.setTimeout(async () => {
+      try {
+        const res = await fetch("/api/shipping-rate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            lines,
+            destinationZip,
+          }),
+          signal: controller.signal,
+        });
+        const data = (await res.json()) as {
+          shippingCents?: number;
+          error?: string;
+        };
+        if (!res.ok || typeof data.shippingCents !== "number") {
+          throw new Error(data.error || "Could not calculate shipping.");
+        }
+        setQuote({ key: quoteKey, cents: data.shippingCents });
+        setQuoteError(null);
+      } catch (err) {
+        if (err instanceof DOMException && err.name === "AbortError") return;
+        setQuoteError({
+          key: quoteKey,
+          message:
+            err instanceof Error
+              ? err.message
+              : "Could not calculate shipping.",
+        });
+      }
+    }, 400);
+
+    return () => {
+      window.clearTimeout(timer);
+      controller.abort();
+    };
+  }, [destinationZip, lines, quoteKey]);
 
   async function preparePayment() {
     setError(null);
@@ -120,9 +185,13 @@ export function CheckoutForm() {
       !contact.shippingLine1 ||
       !contact.shippingCity ||
       !contact.shippingState ||
-      !contact.shippingZip
+      !destinationZip
     ) {
       setError("Please complete your shipping address.");
+      return;
+    }
+    if (!quoteReady) {
+      setError(shippingError || "Wait for shipping to calculate before paying.");
       return;
     }
 
@@ -288,6 +357,7 @@ export function CheckoutForm() {
                   setClientSecret(null);
                 }}
                 autoComplete="shipping postal-code"
+                inputMode="numeric"
               />
             </div>
 
@@ -317,22 +387,26 @@ export function CheckoutForm() {
               </p>
             )}
 
-            {!clientSecret ? (
+            {!paymentVisible ? (
               <button
                 type="submit"
                 className={styles.payBtn}
-                disabled={preparing || !canCheckout}
+                disabled={preparing || !canCheckout || !quoteReady}
               >
-                {preparing ? "Preparing payment…" : "Continue to payment"}
+                {preparing
+                  ? "Preparing payment…"
+                  : shippingStatus === "loading"
+                    ? "Calculating shipping…"
+                    : "Continue to payment"}
               </button>
             ) : null}
             </form>
-            {clientSecret ? (
+            {paymentVisible ? (
               <div className={styles.paymentMount}>
                 <Elements
                   stripe={stripePromise}
                   options={{
-                    clientSecret,
+                    clientSecret: clientSecret!,
                     appearance: getStripeAppearance(),
                   }}
                 >
@@ -377,15 +451,30 @@ export function CheckoutForm() {
               </div>
               <div className={styles.totalRow}>
                 <span>Shipping</span>
-                <span>
-                  {shippingCents === 0
-                    ? "Free"
-                    : formatPrice(shippingCents)}
+                <span
+                  className={
+                    quoteReady ? undefined : styles.shippingPending
+                  }
+                >
+                  {shippingStatus === "loading"
+                    ? "Calculating…"
+                    : shippingStatus === "error"
+                      ? "Unavailable"
+                      : shippingCents != null
+                        ? formatPrice(shippingCents)
+                        : "Enter ZIP"}
                 </span>
               </div>
+              {shippingStatus === "error" && shippingError ? (
+                <p className={styles.shippingError} role="alert">
+                  {shippingError}
+                </p>
+              ) : null}
               <div className={`${styles.totalRow} ${styles.grand}`}>
                 <span>Total</span>
-                <span>{formatPrice(totalCents)}</span>
+                <span>
+                  {totalCents == null ? "—" : formatPrice(totalCents)}
+                </span>
               </div>
             </div>
           </section>
@@ -405,6 +494,7 @@ function Field({
   full,
   placeholder,
   optional,
+  inputMode,
 }: {
   label: string;
   name: string;
@@ -415,6 +505,7 @@ function Field({
   full?: boolean;
   placeholder?: string;
   optional?: boolean;
+  inputMode?: HTMLAttributes<HTMLInputElement>["inputMode"];
 }) {
   const id = `checkout-${name}`;
   return (
@@ -436,7 +527,7 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         autoComplete={autoComplete}
         placeholder={placeholder}
-        inputMode={type === "tel" ? "tel" : undefined}
+        inputMode={inputMode ?? (type === "tel" ? "tel" : undefined)}
         required={!optional}
       />
     </div>

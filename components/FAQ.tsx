@@ -18,7 +18,7 @@ const FAQS = [
   },
   {
     q: "Do you ship?",
-    a: "Yes. Flat-rate shipping is calculated by how many jars you order. You'll see the exact amount before you pay.",
+    a: "Yes. We ship USPS Ground Advantage. The rate is calculated from your ZIP code and the packed weight of your jars. You'll see the exact amount before you pay.",
   },
   {
     q: "When is honey flow?",

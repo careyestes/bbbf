@@ -4,7 +4,7 @@
  * ============================================================
  * Jar prices are derived from price-per-ounce × jar size, where
  * the per-ounce rate steps down as jars get bigger. Shipping is
- * flat-rate by total jar count.
+ * live USPS Ground Advantage (see lib/shipping-packages.ts).
  *
  * Benchmarks (Mississippi direct-to-consumer, 2026):
  *   mid-market direct retail   $0.68–$0.97/oz
@@ -47,15 +47,6 @@ export function pricePerOzForVolume(volumeOz: number): number {
 export const LOWEST_PRICE_PER_OZ = Math.min(
   ...PRICE_PER_OZ_TIERS.map((t) => pricePerOzForVolume(t.maxOz)),
 );
-
-/**
- * Flat-rate shipping by total jars in the cart.
- * Edit `rateCents` (100 = $1.00) to change shipping.
- */
-export const SHIPPING_TIERS = [
-  { maxJars: 2, rateCents: 800 }, // 1–2 jars → $8
-  { maxJars: 4, rateCents: 1200 }, // 3–4 jars → $12
-] as const;
 
 /** Price in cents for a given fluid-ounce volume. */
 export function priceCentsForOz(volumeOz: number): number {

@@ -10,8 +10,9 @@ import {
   priceCentsForProduct,
   type ProductId,
 } from "@/lib/products";
-import { shippingCentsForJarCount, totalJarCount } from "@/lib/shipping";
+import { normalizeDestinationZip } from "@/lib/shipping";
 import { getStripe } from "@/lib/stripe";
+import { quoteShippingCents, UspsQuoteError } from "@/lib/usps";
 
 const bodySchema = z.object({
   lines: z
@@ -127,12 +128,21 @@ export async function POST(request: Request) {
       };
     });
 
+    const destinationZip = normalizeDestinationZip(data.shippingZip);
+    if (!destinationZip) {
+      return NextResponse.json(
+        { error: "Enter a 5-digit ZIP code." },
+        { status: 400 },
+      );
+    }
+
     const subtotalCents = items.reduce(
       (sum, item) => sum + item.unitPriceCents * item.quantity,
       0,
     );
-    const shippingCents = shippingCentsForJarCount(
-      totalJarCount(data.lines),
+    const { shippingCents } = await quoteShippingCents(
+      data.lines,
+      destinationZip,
     );
     const totalCents = subtotalCents + shippingCents;
     const orderPublicId = publicOrderId();
@@ -237,6 +247,9 @@ export async function POST(request: Request) {
     });
   } catch (err) {
     console.error("create-payment-intent error", err);
+    if (err instanceof UspsQuoteError) {
+      return NextResponse.json({ error: err.message }, { status: err.status });
+    }
     const message =
       err instanceof Error ? err.message : "Unable to create payment";
     const isStock =

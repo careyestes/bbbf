@@ -1,6 +1,6 @@
 # Big Blue Barn Farm
 
-Mobile-first honey shop for **Big Blue Barn Farm** (Shaw, MS). Customers pick jar sizes, check out with Stripe on-site (Apple Pay / Google Pay / card), and choose local pickup or flat-rate shipping. Built as a Next.js website first; ready to package later for the App Store.
+Mobile-first honey shop for **Big Blue Barn Farm** (Shaw, MS). Customers pick jar sizes, check out with Stripe on-site (Apple Pay / Google Pay / card), and pay USPS Ground Advantage shipping quoted from their ZIP. Built as a Next.js website first; ready to package later for the App Store.
 
 ## Stack
 
@@ -14,7 +14,7 @@ Mobile-first honey shop for **Big Blue Barn Farm** (Shaw, MS). Customers pick ja
 ```bash
 npm install
 cp .env.example .env.local
-# Fill in Stripe + Resend keys (and Turso URL for production)
+# Fill in Stripe, Resend, and USPS keys (and Turso URL for production)
 npm run dev
 ```
 
@@ -30,7 +30,7 @@ Put the printed `whsec_...` into `.env.local` as `STRIPE_WEBHOOK_SECRET`.
 
 ## Configure prices & shipping
 
-**One place:** [`lib/pricing.ts`](lib/pricing.ts)
+**Prices:** [`lib/pricing.ts`](lib/pricing.ts) · **Shipping packages:** [`lib/shipping-packages.ts`](lib/shipping-packages.ts)
 
 - `PRICE_PER_OZ_TIERS` — per-ounce rate by jar size; the rate steps down as jars get bigger, matching how Mississippi apiaries price bulk
 
@@ -41,8 +41,16 @@ Put the printed `whsec_...` into `.env.local` as `STRIPE_WEBHOOK_SECRET`.
 | Pint | 16 oz | $0.88/oz | $14 |
 | Quart | 32 oz | $0.75/oz | $24 |
 
-- `SHIPPING_TIERS` — flat rates by jar count (1–2 / 3–4 / 5+)
 - `NEXT_PUBLIC_HONEY_PRICE_PER_OZ` in `.env.local` / Vercel forces one flat rate at every size and ignores the tiers — leave it unset unless you want that
+
+**Shipping** is live USPS Ground Advantage after the customer enters a ZIP. Boxes and packed weights live in [`lib/shipping-packages.ts`](lib/shipping-packages.ts):
+
+| Jar | Box (in) | Packed weight |
+|-----|----------|---------------|
+| Quarter-Pint / Half-Pint / Pint | 8 × 5.5 × 5.5 | 12 / 18 / 32 oz |
+| Quart | 8.375 × 5.25 × 5.25 | 51 oz |
+
+Create an app at [developers.usps.com](https://developers.usps.com/), enable Domestic Prices, and set `USPS_CLIENT_ID` + `USPS_CLIENT_SECRET`. Checkout is blocked if USPS cannot return a rate (no flat-rate fallback).
 
 Jar catalog (names, images): [`lib/products.ts`](lib/products.ts).
 
@@ -89,6 +97,9 @@ curl -X POST http://localhost:3000/api/inventory \
 | `RESEND_FROM_EMAIL` | Verified sender |
 | `NEXT_PUBLIC_SITE_URL` | Canonical URL / payment return |
 | `INVENTORY_ADMIN_SECRET` | Auth for restocking via `POST /api/inventory` |
+| `USPS_CLIENT_ID` | USPS OAuth client id (Domestic Prices) |
+| `USPS_CLIENT_SECRET` | USPS OAuth client secret |
+| `USPS_API_BASE` | Optional; defaults to `https://apis.usps.com` |
 
 ## Deploy (Vercel)
 
@@ -103,7 +114,7 @@ curl -X POST http://localhost:3000/api/inventory \
 - `/` — hero + jar picker + FAQ
 - `/order` — full jar catalog
 - `/reorder` — QR landing for empty jars (`?size=pint` highlights that jar)
-- `/checkout` — pickup/shipping + embedded pay
+- `/checkout` — shipping address + USPS rate + embedded pay
 - `/order/success` — confirmation
 - `/about` — story, map, honey-flow waitlist
 
