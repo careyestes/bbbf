@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Providers } from "@/components/Providers";
 import { FARM } from "@/lib/config";
 import { THEME_COLOR, THEME_INIT_SCRIPT } from "@/lib/theme";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -95,6 +96,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
